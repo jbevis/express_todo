@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "./node_modules/eslint/bin/eslint.js ./lib/*.js",
+    "lint": "eslint --ignore-path .gitignore .",
     "start": "nodemon server.js"
   },
   "keywords": [],
@@ -19,6 +19,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
-    "eslint": "^5.2.0"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
   }
 }

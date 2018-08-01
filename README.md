@@ -15,7 +15,7 @@ This is a REST API built using Node.js, ExpressJS, Knex.js, and PostgreSQL to tr
 * ```knex seed:run```
 
 - Start server: ```npm start```
-- Run linter: ```npm lint```
+- Run linter: ```npm run lint```
 
 ## Endpoints
 
