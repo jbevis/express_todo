@@ -4,14 +4,17 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const environment = process.env.NODE_ENV || 'development';
+const knex = require('knex');
 const configuration = require('./knexfile')[environment];
-const database = require('knex')(configuration);
+
+const database = (knex)(configuration);
 
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('port', process.env.PORT || 3000);
+app.locals.title = '303 To Do List';
 
 app.get('/', (request, response) => {
   response.sendFile('index.html');
@@ -61,8 +64,8 @@ app.post('/api/v1/todos', (request, response) => {
   }
 
   database('todos').insert(todo, 'id')
-    .then((todo) => {
-      response.status(201).json({ id: todo[0] });
+    .then((newTodo) => {
+      response.status(201).json({ id: newTodo[0] });
     })
     .catch((error) => {
       response.status(500).json({ error });
